@@ -1,0 +1,419 @@
+---
+openapi: 3.0.1
+info:
+  title: Context API
+  version: v1
+paths:
+  "/api/v1/conversations/{id}":
+    get:
+      summary: Returns conversation details
+      tags:
+      - premium
+      operationId: conversation
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/conversation"
+  "/api/v1/conversations":
+    get:
+      summary: Returns list of conversations
+      operationId: conversations
+      tags:
+      - premium
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: start_time
+        in: query
+        required: false
+        description: Limits returned conversations to those that occurred after given
+          time.<br />Must be ISO 8601. Defaults to the beginning of 6 days ago.<br
+          />
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        required: false
+        description: Limits returned conversations to those that occurred before given
+          time.<br />Must be ISO 8601. Defaults to now.<br />
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  conversations:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/conversation"
+                required:
+                - count
+                - conversations
+  "/api/v1/log/conversation":
+    post:
+      summary: Ingests a conversation
+      operationId: log_conversation
+      tags:
+      - log
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: conversation ingested
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversation:
+                  "$ref": "#/components/schemas/conversation_params"
+  "/api/v1/log/conversation/upsert":
+    post:
+      summary: Ingests or updates conversation
+      operationId: log_conversation_upsert
+      tags:
+      - log
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: conversation ingested
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversation:
+                  "$ref": "#/components/schemas/conversation_params"
+  "/api/v1/topic_suggestions":
+    get:
+      summary: Returns suggested topics details
+      tags:
+      - premium
+      operationId: suggested_topics
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  topics:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/topic_with_samples"
+                required:
+                - count
+                - topics
+  "/api/v1/topic_suggestions/{id}/statistics":
+    get:
+      summary: Returns statistics of selected topic
+      tags:
+      - premium
+      operationId: suggested_topic_conversations
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  topic:
+                    "$ref": "#/components/schemas/topic"
+                  statistics:
+                    type: object
+                    properties:
+                      conversation_count:
+                        type: integer
+                      user_message_count:
+                        type: integer
+                      assistant_message_count:
+                        type: integer
+                      mean_sentiment:
+                        type: number
+                        format: float
+                        minimum: -1
+                        maximum: 1
+                      mean_user_rating:
+                        type: number
+                        format: float
+                        minimum: -1
+                        maximum: 1
+                    required:
+                    - conversation_count
+                    - user_message_count
+                    - assistant_message_count
+                    - mean_sentiment
+                    - mean_user_rating
+                required:
+                - topic
+                - statistics
+  "/api/v1/topic_suggestions/{id}/conversations":
+    get:
+      summary: Returns a list of conversations matching given topic
+      tags:
+      - premium
+      operationId: suggested_topic_statistics
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  conversations:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/conversation"
+                required:
+                - count
+                - conversations
+components:
+  schemas:
+    conversation:
+      type: object
+      x-ms-client-name: conversation_response
+      properties:
+        id:
+          type: string
+        metadata:
+          "$ref": "#/components/schemas/metadata"
+        sentiment_trend:
+          type: string
+          enum:
+          - up
+          - flat
+          - down
+        topics:
+          type: array
+          items:
+            "$ref": "#/components/schemas/topic"
+        suggested_topics:
+          type: array
+          items:
+            "$ref": "#/components/schemas/topic"
+        messages:
+          type: array
+          items:
+            "$ref": "#/components/schemas/message"
+      required:
+      - id
+      - metadata
+      - sentiment_trend
+      - topics
+      - suggested_topics
+      - messages
+    message:
+      type: object
+      x-ms-client-name: message_response
+      properties:
+        type:
+          type: string
+          enum:
+          - message
+          - tool
+          default: message
+        event_timestamp:
+          type: string
+          format: date-time
+        role:
+          type: string
+          enum:
+          - system
+          - assistant
+          - user
+        message:
+          type: string
+        rating:
+          "$ref": "#/components/schemas/rating"
+        language:
+          type: string
+        translation:
+          type: string
+        sentiment:
+          type: number
+          format: float
+        topics:
+          type: array
+          items:
+            "$ref": "#/components/schemas/topic"
+        suggested_topics:
+          type: array
+          items:
+            "$ref": "#/components/schemas/topic"
+        metadata:
+          "$ref": "#/components/schemas/metadata"
+      required:
+      - role
+      - message
+      - rating
+      - language
+      - sentiment
+      - topics
+    topic:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+    topic_with_samples:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        conversations_sample:
+          type: array
+          items:
+            "$ref": "#/components/schemas/conversation"
+      required:
+      - id
+      - name
+      - conversations_sample
+    conversation_params:
+      type: object
+      x-ms-client-name: conversation
+      properties:
+        messages:
+          type: array
+          items:
+            "$ref": "#/components/schemas/message_params"
+        metadata:
+          "$ref": "#/components/schemas/metadata"
+    message_params:
+      type: object
+      x-ms-client-name: message
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - assistant
+          - user
+        message:
+          type: string
+        type:
+          type: string
+          enum:
+          - message
+          - tool
+          default: message
+        event_timestamp:
+          type: string
+          format: date-time
+        metadata:
+          "$ref": "#/components/schemas/metadata"
+        rating:
+          "$ref": "#/components/schemas/rating"
+        name:
+          type: string
+        thought:
+          type: string
+        input:
+          type: object
+        observation:
+          type: string
+    rating:
+      type: integer
+      enum:
+      - -1
+      - 0
+      - 1
+      x-ms-enum:
+        name: Rating
+        values:
+        - value: -1
+          description: Negative User Rating
+          name: Negative
+        - value: 0
+          description: Neutral
+          name: Neutral
+        - value: 1
+          description: Positive
+          name: Positive
+    metadata:
+      type: object
+      additionalProperties:
+        type: string
+servers:
+- url: https://api.context.ai
