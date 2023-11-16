@@ -32,8 +32,6 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
-  installationURL: https://github.com/speakeasy-sdks/Context-sample-sdk
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: Context-API
-  repoSubDirectory: .
