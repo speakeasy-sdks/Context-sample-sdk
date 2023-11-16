@@ -4,6 +4,293 @@ info:
   title: Context API
   version: v1
 paths:
+  "/api/v1/conversations/series":
+    get:
+      summary: Returns suggested topics details
+      tags:
+      - premium
+      operationId: conversation_series
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - available
+  "/api/v1/conversations/series/sentiment":
+    parameters:
+    - name: tenant_id
+      in: query
+      required: false
+      description: Filter by tenant id.<br />
+      schema:
+        type: string
+    - name: start_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred after given time.<br />Must
+        be ISO 8601. Defaults to the beginning of 6 days ago.<br />
+      schema:
+        type: string
+    - name: end_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred before given time.<br />Must
+        be ISO 8601. Defaults to now.<br />
+      schema:
+        type: string
+    - name: period
+      in: query
+      required: false
+      description: 'Period to group data by. Defaults to day. Options are: day, week,
+        month.<br />'
+      schema:
+        type: string
+    get:
+      summary: Returns sentiment details
+      tags:
+      - premium
+      operationId: sentiment
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  series:
+                    "$ref": "#/components/schemas/series"
+                  type:
+                    type: string
+                  period:
+                    type: string
+                  start_time:
+                    type: string
+                  end_time:
+                    type: string
+                required:
+                - series
+                - type
+                - period
+                - start_time
+                - end_time
+  "/api/v1/conversations/series/rating":
+    parameters:
+    - name: tenant_id
+      in: query
+      required: false
+      description: Filter by tenant id.<br />
+      schema:
+        type: string
+    - name: start_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred after given time.<br />Must
+        be ISO 8601. Defaults to the beginning of 6 days ago.<br />
+      schema:
+        type: string
+    - name: end_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred before given time.<br />Must
+        be ISO 8601. Defaults to now.<br />
+      schema:
+        type: string
+    - name: period
+      in: query
+      required: false
+      description: 'Period to group data by. Defaults to day. Options are: day, week,
+        month.<br />'
+      schema:
+        type: string
+    get:
+      summary: Returns rating details
+      tags:
+      - premium
+      operationId: rating
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  series:
+                    "$ref": "#/components/schemas/series"
+                  type:
+                    type: string
+                  period:
+                    type: string
+                  start_time:
+                    type: string
+                  end_time:
+                    type: string
+                required:
+                - series
+                - type
+                - period
+                - start_time
+                - end_time
+  "/api/v1/conversations/series/estimated_cost":
+    parameters:
+    - name: tenant_id
+      in: query
+      required: false
+      description: Filter by tenant id.<br />
+      schema:
+        type: string
+    - name: start_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred after given time.<br />Must
+        be ISO 8601. Defaults to the beginning of 6 days ago.<br />
+      schema:
+        type: string
+    - name: end_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred before given time.<br />Must
+        be ISO 8601. Defaults to now.<br />
+      schema:
+        type: string
+    - name: period
+      in: query
+      required: false
+      description: 'Period to group data by. Defaults to day. Options are: day, week,
+        month.<br />'
+      schema:
+        type: string
+    get:
+      summary: Returns estimated cost details
+      tags:
+      - premium
+      operationId: estimated_cost
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  series:
+                    "$ref": "#/components/schemas/series"
+                  type:
+                    type: string
+                  period:
+                    type: string
+                  start_time:
+                    type: string
+                  end_time:
+                    type: string
+                required:
+                - series
+                - type
+                - period
+                - start_time
+                - end_time
+  "/api/v1/conversations/series/volume":
+    parameters:
+    - name: tenant_id
+      in: query
+      required: false
+      description: Filter by tenant id.<br />
+      schema:
+        type: string
+    - name: start_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred after given time.<br />Must
+        be ISO 8601. Defaults to the beginning of 6 days ago.<br />
+      schema:
+        type: string
+    - name: end_time
+      in: query
+      required: false
+      description: Limits scope to data that occurred before given time.<br />Must
+        be ISO 8601. Defaults to now.<br />
+      schema:
+        type: string
+    - name: period
+      in: query
+      required: false
+      description: 'Period to group data by. Defaults to day. Options are: day, week,
+        month.<br />'
+      schema:
+        type: string
+    get:
+      summary: Returns volume details
+      tags:
+      - premium
+      operationId: volume
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: conversation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  series:
+                    "$ref": "#/components/schemas/series"
+                  type:
+                    type: string
+                  period:
+                    type: string
+                  start_time:
+                    type: string
+                  end_time:
+                    type: string
+                required:
+                - series
+                - type
+                - period
+                - start_time
+                - end_time
   "/api/v1/conversations/{id}":
     get:
       summary: Returns conversation details
@@ -57,6 +344,24 @@ paths:
           time.<br />Must be ISO 8601. Defaults to now.<br />
         schema:
           type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number of results to return. Defaults to 1.<br />
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        description: Number of results to return per page. Defaults to 20.<br />
+        schema:
+          type: integer
+      - name: tenant_id
+        in: query
+        required: false
+        description: Filter by tenant id.<br />
+        schema:
+          type: integer
       responses:
         '200':
           description: conversations
@@ -65,15 +370,15 @@ paths:
               schema:
                 type: object
                 properties:
-                  count:
-                    type: integer
                   conversations:
                     type: array
                     items:
                       "$ref": "#/components/schemas/conversation"
+                  pagination:
+                    "$ref": "#/components/schemas/pagination"
                 required:
-                - count
                 - conversations
+                - pagination
   "/api/v1/log/conversation":
     post:
       summary: Ingests a conversation
@@ -122,6 +427,42 @@ paths:
               properties:
                 conversation:
                   "$ref": "#/components/schemas/conversation_params"
+  "/api/v1/log/conversation/thread":
+    post:
+      summary: Ingests or updates a thread
+      operationId: log_conversation_thread
+      tags:
+      - log
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: thread conversation ingested
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversation:
+                  "$ref": "#/components/schemas/thread_params"
   "/api/v1/topic_suggestions":
     get:
       summary: Returns suggested topics details
@@ -135,6 +476,18 @@ paths:
         in: header
         schema:
           type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number of results to return. Defaults to 1.<br />
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        description: Number of results to return per page. Defaults to 20.<br />
+        schema:
+          type: integer
       responses:
         '200':
           description: conversation
@@ -143,15 +496,15 @@ paths:
               schema:
                 type: object
                 properties:
-                  count:
-                    type: integer
                   topics:
                     type: array
                     items:
                       "$ref": "#/components/schemas/topic_with_samples"
+                  pagination:
+                    "$ref": "#/components/schemas/pagination"
                 required:
-                - count
                 - topics
+                - pagination
   "/api/v1/topic_suggestions/{id}/statistics":
     get:
       summary: Returns statistics of selected topic
@@ -226,6 +579,33 @@ paths:
         required: true
         schema:
           type: string
+      - name: start_time
+        in: query
+        required: false
+        description: Limits returned conversations to those that occurred after given
+          time.<br />Must be ISO 8601. Defaults to the beginning of 6 days ago.<br
+          />
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        required: false
+        description: Limits returned conversations to those that occurred before given
+          time.<br />Must be ISO 8601. Defaults to now.<br />
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number of results to return. Defaults to 1.<br />
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        description: Number of results to return per page. Defaults to 20.<br />
+        schema:
+          type: integer
       responses:
         '200':
           description: conversations
@@ -234,16 +614,20 @@ paths:
               schema:
                 type: object
                 properties:
-                  count:
-                    type: integer
                   conversations:
                     type: array
                     items:
                       "$ref": "#/components/schemas/conversation"
+                  pagination:
+                    "$ref": "#/components/schemas/pagination"
                 required:
-                - count
                 - conversations
+                - pagination
 components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
   schemas:
     conversation:
       type: object
@@ -360,6 +744,20 @@ components:
             "$ref": "#/components/schemas/message_params"
         metadata:
           "$ref": "#/components/schemas/metadata"
+    thread_params:
+      type: object
+      x-ms-client-name: conversation
+      properties:
+        id:
+          type: string
+        messages:
+          type: array
+          items:
+            "$ref": "#/components/schemas/message_params"
+        metadata:
+          "$ref": "#/components/schemas/metadata"
+      required:
+      - messages
     message_params:
       type: object
       x-ms-client-name: message
@@ -415,5 +813,47 @@ components:
       type: object
       additionalProperties:
         type: string
+    pagination:
+      type: object
+      properties:
+        total_records:
+          type: integer
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        previous_page:
+          type: integer
+          nullable: true
+        next_page:
+          type: integer
+          nullable: true
+        page_count:
+          type: integer
+      required:
+      - total_records
+      - per_page
+      - current_page
+      - previous_page
+      - next_page
+      - page_count
+    series:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          data:
+            type: array
+            items:
+              type: array
+              items:
+                oneOf:
+                - type: integer
+                - type: string
+        required:
+        - name
+        - data
 servers:
 - url: https://api.context.ai
