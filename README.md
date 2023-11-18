@@ -190,7 +190,6 @@ const sdk = new ContextAPI({defaultClient: httpClient});
 <!-- End Custom HTTP Client -->
 
 <!-- Start Authentication -->
-
 ## Authentication
 
 ### Per-Client Security Schemes
