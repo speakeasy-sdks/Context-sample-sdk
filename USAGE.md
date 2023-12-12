@@ -1,11 +1,11 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```typescript
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
@@ -14,7 +14,9 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

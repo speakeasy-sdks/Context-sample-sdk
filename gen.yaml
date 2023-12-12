@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 507957bb14025bb693c72649eb2886e3
   docVersion: v1
-  speakeasyVersion: 1.121.1
-  generationVersion: 2.194.1
+  speakeasyVersion: 1.126.0
+  generationVersion: 2.213.3
 generation:
   comments: {}
   sdkClassName: Context-API
@@ -14,12 +14,12 @@ generation:
   flattenGlobalSecurity: true
 features:
   typescript:
-    core: 3.1.4
+    core: 3.3.0
     flattening: 2.81.1
-    globalSecurity: 2.82.0
+    globalSecurity: 2.82.1
     globalServerURLs: 2.82.1
 typescript:
-  version: 0.1.1
+  version: 0.2.0
   author: Context
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -37,3 +37,4 @@ typescript:
   outputModelSuffix: output
   packageName: Context-API
   repoSubDirectory: .
+  templateVersion: v1

@@ -25,9 +25,9 @@ import {
 } from "Context-API/dist/models/components";
 import { LogConversationRequest, LogConversationRequestBody } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const requestBody: LogConversationRequestBody = {
   conversation: {
@@ -50,7 +50,9 @@ const requestBody: LogConversationRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -81,9 +83,9 @@ import { ContextAPI } from "Context-API";
 import { Input, MessageParams, MessageParamsRole, MessageParamsType, Rating, ThreadParams } from "Context-API/dist/models/components";
 import { LogConversationThreadRequest, LogConversationThreadRequestBody } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const requestBody: LogConversationThreadRequestBody = {
   conversation: {
@@ -106,7 +108,9 @@ const requestBody: LogConversationThreadRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -144,9 +148,9 @@ import {
 } from "Context-API/dist/models/components";
 import { LogConversationUpsertRequest, LogConversationUpsertRequestBody } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const requestBody: LogConversationUpsertRequestBody = {
   conversation: {
@@ -169,7 +173,9 @@ const requestBody: LogConversationUpsertRequestBody = {
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

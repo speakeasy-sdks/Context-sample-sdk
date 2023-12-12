@@ -14,7 +14,7 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -28,19 +28,20 @@ npm add https://github.com/speakeasy-sdks/Context-sample-sdk
 ```bash
 yarn add https://github.com/speakeasy-sdks/Context-sample-sdk
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```typescript
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
@@ -49,14 +50,15 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [premium](docs/sdks/premium/README.md)
 
@@ -76,9 +78,9 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
 * [logConversation](docs/sdks/log/README.md#logconversation) - Ingests a conversation
 * [logConversationThread](docs/sdks/log/README.md#logconversationthread) - Ingests or updates a thread
 * [logConversationUpsert](docs/sdks/log/README.md#logconversationupsert) - Ingests or updates conversation
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -93,26 +95,33 @@ Example
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
     let res;
     try {
         res = await sdk.premium.conversation(id);
-    } catch (e) {}
+    } catch (err) {
+        if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Index
@@ -129,10 +138,10 @@ You can override the default server globally by passing a server index to the `s
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
         serverIdx: 0,
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
@@ -141,7 +150,9 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -153,10 +164,10 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
         serverURL: "https://api.context.ai",
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
@@ -165,21 +176,23 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from Context-API import ContextAPI;
-import axios;
+import { Context-API } from "ContextAPI";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -187,9 +200,9 @@ const httpClient = axios.create({
 
 const sdk = new ContextAPI({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -205,9 +218,9 @@ To authenticate with the API the `bearer` parameter must be set when initializin
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async () => {
+async function run() {
     const sdk = new ContextAPI({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
     const id: string = "string";
 
@@ -216,10 +229,12 @@ import { ConversationRequest } from "Context-API/dist/models/operations";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

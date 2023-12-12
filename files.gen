@@ -47,7 +47,6 @@ src/models/components/security.ts
 src/models/errors/index.ts
 src/models/operations/index.ts
 src/models/components/index.ts
-USAGE.md
 docs/models/operations/conversationrequest.md
 docs/models/operations/conversationresponse.md
 docs/models/operations/conversationseriesrequest.md
@@ -109,4 +108,5 @@ docs/models/components/security.md
 docs/sdks/contextapi/README.md
 docs/sdks/premium/README.md
 docs/sdks/log/README.md
+USAGE.md
 .gitattributes

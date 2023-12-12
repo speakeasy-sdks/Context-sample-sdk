@@ -24,9 +24,9 @@ Returns conversation details
 import { ContextAPI } from "Context-API";
 import { ConversationRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -35,7 +35,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -65,9 +67,9 @@ Returns suggested topics details
 import { ContextAPI } from "Context-API";
 import { ConversationSeriesRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.premium.conversationSeries();
@@ -75,7 +77,9 @@ import { ConversationSeriesRequest } from "Context-API/dist/models/operations";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -103,9 +107,9 @@ Returns list of conversations
 ```typescript
 import { ContextAPI } from "Context-API";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.premium.conversations({});
@@ -113,7 +117,9 @@ import { ContextAPI } from "Context-API";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -143,9 +149,9 @@ Returns estimated cost details
 import { ContextAPI } from "Context-API";
 import { EstimatedCostRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const endTime: string = "string";
 const period: string = "string";
@@ -157,7 +163,9 @@ const tenantId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -190,9 +198,9 @@ Returns rating details
 import { ContextAPI } from "Context-API";
 import { RatingRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const endTime: string = "string";
 const period: string = "string";
@@ -204,7 +212,9 @@ const tenantId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -237,9 +247,9 @@ Returns sentiment details
 import { ContextAPI } from "Context-API";
 import { SentimentRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const endTime: string = "string";
 const period: string = "string";
@@ -251,7 +261,9 @@ const tenantId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -284,9 +296,9 @@ Returns statistics of selected topic
 import { ContextAPI } from "Context-API";
 import { SuggestedTopicConversationsRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -295,7 +307,9 @@ const id: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -324,9 +338,9 @@ Returns a list of conversations matching given topic
 ```typescript
 import { ContextAPI } from "Context-API";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.premium.suggestedTopicStatistics({
@@ -336,7 +350,9 @@ import { ContextAPI } from "Context-API";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -366,9 +382,9 @@ Returns suggested topics details
 import { ContextAPI } from "Context-API";
 import { SuggestedTopicsRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const page: number = 627639;
 const perPage: number = 530793;
@@ -378,7 +394,9 @@ const perPage: number = 530793;
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -409,9 +427,9 @@ Returns volume details
 import { ContextAPI } from "Context-API";
 import { VolumeRequest } from "Context-API/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new ContextAPI({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const endTime: string = "string";
 const period: string = "string";
@@ -423,7 +441,9 @@ const tenantId: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
