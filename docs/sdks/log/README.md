@@ -35,12 +35,12 @@ const requestBody: LogConversationRequestBody = {
       {
         input: {},
         metadata: {
-          "key": "string",
+          "key": "<value>",
         },
       },
     ],
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   },
 };
@@ -93,12 +93,12 @@ const requestBody: LogConversationThreadRequestBody = {
       {
         input: {},
         metadata: {
-          "key": "string",
+          "key": "<value>",
         },
       },
     ],
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   },
 };
@@ -158,12 +158,12 @@ const requestBody: LogConversationUpsertRequestBody = {
       {
         input: {},
         metadata: {
-          "key": "string",
+          "key": "<value>",
         },
       },
     ],
     metadata: {
-      "key": "string",
+      "key": "<value>",
     },
   },
 };

@@ -1,6 +1,6 @@
 {
   "name": "Context-API",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Context",
   "scripts": {
     "prepare": "tsc --build",

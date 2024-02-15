@@ -28,7 +28,7 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.premium.conversation(id);
 
@@ -153,10 +153,10 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const endTime: string = "string";
-const period: string = "string";
-const startTime: string = "string";
-const tenantId: string = "string";
+const endTime: string = "<value>";
+const period: string = "<value>";
+const startTime: string = "<value>";
+const tenantId: string = "<value>";
 
   const res = await sdk.premium.estimatedCost(endTime, period, startTime, tenantId);
 
@@ -202,10 +202,10 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const endTime: string = "string";
-const period: string = "string";
-const startTime: string = "string";
-const tenantId: string = "string";
+const endTime: string = "<value>";
+const period: string = "<value>";
+const startTime: string = "<value>";
+const tenantId: string = "<value>";
 
   const res = await sdk.premium.rating(endTime, period, startTime, tenantId);
 
@@ -251,10 +251,10 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const endTime: string = "string";
-const period: string = "string";
-const startTime: string = "string";
-const tenantId: string = "string";
+const endTime: string = "<value>";
+const period: string = "<value>";
+const startTime: string = "<value>";
+const tenantId: string = "<value>";
 
   const res = await sdk.premium.sentiment(endTime, period, startTime, tenantId);
 
@@ -300,7 +300,7 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.premium.suggestedTopicConversations(id);
 
@@ -344,7 +344,7 @@ async function run() {
   });
 
   const res = await sdk.premium.suggestedTopicStatistics({
-    id: "<ID>",
+    id: "<id>",
   });
 
   if (res.statusCode == 200) {
@@ -431,10 +431,10 @@ async function run() {
   const sdk = new ContextAPI({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const endTime: string = "string";
-const period: string = "string";
-const startTime: string = "string";
-const tenantId: string = "string";
+const endTime: string = "<value>";
+const period: string = "<value>";
+const startTime: string = "<value>";
+const tenantId: string = "<value>";
 
   const res = await sdk.premium.volume(endTime, period, startTime, tenantId);
 

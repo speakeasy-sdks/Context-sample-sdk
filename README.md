@@ -43,7 +43,7 @@ async function run() {
     const sdk = new ContextAPI({
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     const res = await sdk.premium.conversation(id);
 
@@ -99,7 +99,7 @@ async function run() {
     const sdk = new ContextAPI({
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     let res;
     try {
@@ -143,7 +143,7 @@ async function run() {
         serverIdx: 0,
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     const res = await sdk.premium.conversation(id);
 
@@ -169,7 +169,7 @@ async function run() {
         serverURL: "https://api.context.ai",
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     const res = await sdk.premium.conversation(id);
 
@@ -222,7 +222,7 @@ async function run() {
     const sdk = new ContextAPI({
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     const res = await sdk.premium.conversation(id);
 

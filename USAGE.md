@@ -7,7 +7,7 @@ async function run() {
     const sdk = new ContextAPI({
         bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
-    const id: string = "string";
+    const id: string = "<value>";
 
     const res = await sdk.premium.conversation(id);
 
