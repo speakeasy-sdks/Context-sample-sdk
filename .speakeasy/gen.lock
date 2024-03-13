@@ -3,19 +3,19 @@ id: 53c6ea9d-b24c-4960-9e4a-8fee54a5e23c
 management:
   docChecksum: 507957bb14025bb693c72649eb2886e3
   docVersion: v1
-  speakeasyVersion: internal
-  generationVersion: 2.258.2
-  releaseVersion: 0.2.2
-  configChecksum: ff555691067b2f65b3dc2bfb79491757
+  speakeasyVersion: 1.207.1
+  generationVersion: 2.280.6
+  releaseVersion: 0.2.3
+  configChecksum: 40ec96dd979616b99f9978d293637994
   repoURL: https://github.com/speakeasy-sdks/Context-sample-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/Context-sample-sdk
 features:
   typescript:
-    core: 3.4.7
+    core: 3.4.8
     flattening: 2.81.1
-    globalSecurity: 2.82.2
-    globalServerURLs: 2.82.1
+    globalSecurity: 2.82.4
+    globalServerURLs: 2.82.2
 generatedFiles:
   - src/sdk/premium.ts
   - src/sdk/log.ts
